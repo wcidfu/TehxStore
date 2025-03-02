@@ -1,0 +1,75 @@
+﻿<Window x:Class="TehxStore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Resources/Images/icon.ico" 
+        Title="TEHX Store" Height="742" Width="1258">
+
+    <DockPanel LastChildFill="True">
+        <!-- Хедер -->
+        <DockPanel DockPanel.Dock="Top" Background="#FFF7F6F6" Height="106">
+
+            <!-- Центрированный текст "TEHX" с анимацией -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                <TextBlock FontSize="64" FontWeight="Bold">
+                    <Run x:Name="LetterT" Text="T" Foreground="Blue"/>
+                    <Run x:Name="LetterE" Text="E" Foreground="Blue"/>
+                    <Run x:Name="LetterH" Text="H" Foreground="Blue"/>
+                    <Run x:Name="LetterX" Text="X" Foreground="Blue"/>
+                </TextBlock>
+            </StackPanel>
+
+            <!-- Кнопка Администрирование -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Content="Администрирование" x:Name="AdminPanelButton" Click="AdminPanelButton_Click" 
+                        Height="30" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" FontWeight="Bold"/>
+            </StackPanel>
+
+            <!-- Имя пользователя справа -->
+            <TextBlock x:Name="UserNameTextBlock" VerticalAlignment="Center" FontWeight="Bold" 
+                       FontSize="20" Margin="10" HorizontalAlignment="Right"/>
+        </DockPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="602" Width="1253">
+            <StackPanel Margin="10">
+                <ItemsControl x:Name="ProductItemsControl">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" Margin="5" Padding="10" CornerRadius="5" Background="White">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="150"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Фото продукта -->
+                                    <Border BorderThickness="1" Margin="5" Width="130" Height="130">
+                                        <Image Source="{Binding ProductPhoto}" Stretch="Uniform"/>
+                                    </Border>
+
+                                    <!-- Описание продукта -->
+                                    <StackPanel Grid.Column="1" Margin="10,0">
+                                        <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{Binding ProductDescription}" Margin="0,5,0,0"/>
+                                        <TextBlock Text="Производитель: " FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding ProductManufacturer}"/>
+                                    </StackPanel>
+
+                                    <!-- Кнопка добавления в заказ -->
+                                    <Button Content="Добавить в заказ" Grid.Column="2" Width="140" Height="40" 
+                                            Margin="10" Click="AddToOrderButton_Click" 
+                                            Background="#FF7776E3" Foreground="Black"
+                                            DataContext="{Binding}"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Button Content="Оформить заказ" Click="OrderButton_Click" Width="283" Height="75" 
+                        Background="#FF7776E3" HorizontalAlignment="Right" Margin="10"/>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

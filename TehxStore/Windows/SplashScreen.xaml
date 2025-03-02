@@ -1,0 +1,20 @@
+﻿<Window x:Class="TehxStore.Windows.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Splash Screen" Height="300" Width="500" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" ShowInTaskbar="False" 
+        AllowsTransparency="True" Background="Transparent">
+
+    <Grid Background="Transparent">
+        <TextBlock x:Name="SplashText" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="120" 
+                   FontWeight="Bold"
+                   Foreground="White" 
+                   Opacity="0">
+            TEHX
+        </TextBlock>
+    </Grid>
+</Window>
